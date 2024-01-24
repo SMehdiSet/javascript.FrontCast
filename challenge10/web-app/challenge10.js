@@ -1,13 +1,35 @@
 let allItems = []
 
+// allItems.forEach(function(item) {
+//     allItems.push(JSON.parse(localStorage.getItem('item')))
+// })
+
+for(i = 0; i < localStorage.length; i++) {
+    allItems.push(JSON.parse(localStorage.getItem(`item${i}`)))
+}
+
+allItems.forEach(function(item) {
+    const newItem = document.createElement('div')
+    newItem.textContent = item.title
+    document.querySelector('#itmes-display').appendChild(newItem)
+})
+
+
+console.log(allItems)
+let counter = 0
+
 document.querySelector('#add-new-item').addEventListener('submit', function(e) {
     e.preventDefault()
     const newItem = document.createElement('div')
 
+
     newItem.textContent = e.target.elements.addItem.value
     document.querySelector('#itmes-display').appendChild(newItem)
     e.target.elements.addItem.value = ''
-    allItems.push({title: newItem.textContent})
+    allItems.push({title: newItem.textContent, exist: true})
+    localStorage.setItem(`item${counter}`, JSON.stringify(allItems[allItems.length - 1]))
+    counter++
+    // console.log(JSON.stringify(allItems))
     // console.log(allItems)
 })
 
@@ -15,7 +37,7 @@ let filters = ''
 let searchResultItemRemoval = []
 
 
-
+// localStorage.clear()
 
 
 const itemFinder = function(allItems, searchText) {
