@@ -25,7 +25,7 @@ itemFinder(allItems, filters)
 // console.log(localStorage.getItem('item'))
 
 
-document.querySelector('#add-new-item').addEventListener('submit', function(e) {
+document.querySelector('#add-new-item').addEventListener('submit', e => {
     e.preventDefault()
     const Id = uuidv4()
     const timeStamp = moment().valueOf()
@@ -46,21 +46,20 @@ document.querySelector('#add-new-item').addEventListener('submit', function(e) {
 
 
 
-
-document.querySelector('#search').addEventListener('input', function(e) {
+document.querySelector('#search').addEventListener('input', e => {
     filters.text = e.target.value
     itemFinder(allItems, filters)
 })
 
 
-window.addEventListener('storage', function(e) {
+window.addEventListener('storage', e => {
     if (e.key === 'allItems') {
         allItems = JSON.parse(e.newValue)
         itemFinder(allItems, filters)
     }
 })
 
-document.querySelector('#item-sorter').addEventListener('change', function(e) {
+document.querySelector('#item-sorter').addEventListener('change', e => {
     filters.sortBy = e.target.value
     itemFinder(allItems, filters)
 })

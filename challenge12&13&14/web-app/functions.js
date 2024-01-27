@@ -4,7 +4,7 @@
 // console.log(uuidv4())
 
 
-const getLocalSavedProducts = function() {
+const getLocalSavedProducts = () => {
         const itemsJSON = localStorage.getItem('item')
     if(itemsJSON !== null) {
         return JSON.parse(itemsJSON)
@@ -14,15 +14,15 @@ const getLocalSavedProducts = function() {
     }
 }
 
-const saveItems = function(allItems) {
+const saveItems = allItems => {
     localStorage.setItem('item', JSON.stringify(allItems))
 }
 
 
-const sortByEdited = function(allItems, itemSorter) {
+const sortByEdited = (allItems, itemSorter) => {
     // console.log(itemSorter)
     if (itemSorter === 'byEdited') {
-        return allItems.sort(function(a, b) {
+        return allItems.sort((a, b) => {
             if(a.edited > b.edited) {
                 return -1
             }
@@ -36,7 +36,7 @@ const sortByEdited = function(allItems, itemSorter) {
     }
     else if(itemSorter === 'byCreated') {
         // console.log(itemSorter)
-        return allItems.sort(function(a, b) {
+        return allItems.sort((a, b) => {
             if(a.created > b.created) {
                 return -1
             }
@@ -53,7 +53,7 @@ const sortByEdited = function(allItems, itemSorter) {
     }
 }
 
-const itemFinder = function(allItems, filters) {
+const itemFinder = (allItems, filters) => {
     
     // const searchResultsitems = document.querySelectorAll('p.search-item')
     // console.log(searchResultsitems)
@@ -66,7 +66,7 @@ const itemFinder = function(allItems, filters) {
         return item.title.toLowerCase().includes(filters.text.toLowerCase())
     })
     document.querySelector('#all-items').innerHTML = ''
-    searchResults.forEach(function(item) {
+    searchResults.forEach(item => {
         document.querySelector('#all-items').appendChild(creatItemDOM(item))
     })
 
@@ -82,11 +82,11 @@ const itemFinder = function(allItems, filters) {
 const availabilityChecker = document.querySelector('#availability')
 
 if (availabilityChecker !== null) {
-    availabilityChecker.addEventListener('change', function() {
-        console.log(this.checked)
+    availabilityChecker.addEventListener('change', () => {
+        // console.log(this.checked)
         let searchResults = []
         // searchText = document.querySelector('#search').target.value
-        if (this.checked === true) {
+        if (availabilityChecker.checked === true) {
             searchResults = allItems.filter( item => {
                 return item.title.toLowerCase().includes(document.querySelector('#text-input').value.toLocaleLowerCase())
             })
@@ -94,7 +94,7 @@ if (availabilityChecker !== null) {
                 return item.exist == true
             })
             document.querySelector('#all-items').innerHTML = ''
-            searchResults.forEach(function(item) {
+            searchResults.forEach(item => {
                 document.querySelector('#all-items').appendChild(creatItemDOM(item))
             })
         }
@@ -104,15 +104,15 @@ if (availabilityChecker !== null) {
             })
 
             document.querySelector('#all-items').innerHTML = ''
-            searchResults.forEach(function(item) {
+            searchResults.forEach(item => {
                 document.querySelector('#all-items').appendChild(creatItemDOM(item))
             })
         }
     })
 }
 
-const removeItem = function(ID) {
-    const itemIndex = allItems.findIndex(function(item) {
+const removeItem = ID => {
+    const itemIndex = allItems.findIndex(item => {
         return item.ID === ID
     })
     if (itemIndex > -1) {
@@ -120,7 +120,7 @@ const removeItem = function(ID) {
     }
 }
 
-const creatItemDOM = function(item) {
+const creatItemDOM = item => {
     const searchResultsitem = document.createElement('div')
     const checkBox = document.createElement('input')
     const searchItem = document.createElement('a')
@@ -129,7 +129,7 @@ const creatItemDOM = function(item) {
     checkBox.setAttribute('type', 'checkBox')
     checkBox.checked = item.exist
     searchResultsitem.appendChild(checkBox)
-    checkBox.addEventListener('change', function() {
+    checkBox.addEventListener('change', () => {
         // change exist => saveItem => itemFinder
         item.exist = checkBox.checked
         saveItems(allItems)
@@ -142,7 +142,7 @@ const creatItemDOM = function(item) {
 
     removeButton.textContent = 'Remove'
     searchResultsitem.appendChild(removeButton)
-    removeButton.addEventListener('click', function() {
+    removeButton.addEventListener('click', () => {
         removeItem(item.ID)
         saveItems(allItems)
         itemFinder(allItems, filters)
@@ -152,6 +152,6 @@ const creatItemDOM = function(item) {
 }
 
 
-const getLastEditedTime = function(timeStamp) {
+const getLastEditedTime = timeStamp =>{
     return `Last edited: ${moment(timeStamp).locale('fa').fromNow()}`
 }
