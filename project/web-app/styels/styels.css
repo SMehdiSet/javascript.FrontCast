@@ -1,0 +1,16 @@
+@font-face {
+    font-family: Vazirmatn FD;
+    src: url('/web-app/fonts/Vazirmatn-FD-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Vazirmatn FD";
+    background-color: #00001a;
+    color: #ffff80;
+    border-radius: 3px;
+    direction: rtl;
+}

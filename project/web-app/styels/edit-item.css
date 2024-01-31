@@ -1,0 +1,29 @@
+.item {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    box-sizing: border-box;
+}
+
+#item-title {
+    justify-self:stretch;
+    background-color: #00004d;
+}
+
+#item-price {
+    justify-self: stretch;
+    grid-column: 2;
+    background-color: #00004d;
+}
+
+#remove-item {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+a {
+    background-color: #e6e6ff;
+    color: #999900;
+    padding: 0.25rem 0.5rem;
+}

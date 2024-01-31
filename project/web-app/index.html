@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="/web-app/styels/styels.css">
+        <link rel="stylesheet" href="/web-app/styels/main.css">
+        <title>Web App</title>
+    </head>
+    <body>
+        <section id="items">
+            <h1>تمامی محصولات</h1>
+            <form id="add-new-item">
+                <input type="text" name="itemTitle" placeholder="نام محصول...">
+                <input type="text" name="itemPrice" placeholder="قیمت محصول...">
+                <button>اضافه کردن محصول</button>
+            </form>
+            
+            <select id="item-sorter">
+                <option value="byCreated">به ترتیب ایجاد شده</option>
+                <option value="byEdited">به ترتیب ویرایش شده</option>
+            </select>
+
+            <div id="itmes-display">
+
+            
+            </div>
+            <div id="all-items">
+
+            </div>
+            
+            <div id="search">
+                <input type="text" placeholder="جست و جو..." id="text-input">
+                <input type="checkbox" id="availability">نمایش فقط موجود
+            </div>
+        </section>
+        <script src="/web-app/scripts/moment.js"></script>
+        <script src="/web-app/scripts/jalali.moment.js"></script>
+        <script src="/web-app/scripts/uuid.js"></script>
+        <script src="/web-app/scripts/functions.js "></script>
+        <script src="/web-app/scripts/app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="/web-app/styels/styels.css">
+        <link rel="stylesheet" href="/web-app/styels/edit-item.css">
+        <title>edit item</title>
+    </head>
+    <body>
+        <h2>ویرایش محصول</h2>
+        <div class="item">
+            <input type="text" id="item-title" placeholder="Item Title">
+            <input type="text" id="item-price" placeholder="Item Price">
+            <span id="item-last-edited"></span>
+            <div>
+                <input type="checkbox" id="item-available">موجود
+            </div>
+            <button id="remove-item">حذف محصول</button>
+        </div>
+        <a href="index.html">بازگشت به خانه</a>
+
+        <script src="/web-app/scripts/moment.js"></script>
+        <script src="/web-app/scripts/jalali.moment.js"></script>
+        <script src="/web-app/scripts/uuid.js"></script>
+        <script src="/web-app/scripts/functions.js"></script>
+        <script src="/web-app/scripts/edit-item.js"></script>
+    </body>
+</html>
